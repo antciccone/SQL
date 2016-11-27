@@ -28,6 +28,8 @@ Find the average grade for a each class
 * select classes.name, AVG(enrollments.grade) FROM classes JOIN enrollments ON classes.id = enrollments.class_id GROUP BY classes.name
 
 List students' name and their grade IF their grade is lower than the average.
+* select s.name as student, c.name as class,e.grade as student_grade, a.grade as avg_grade from enrollments e join classes c on c.id = e.class_id join students s on s.id = e.student_id join (select class_id round(avg(grade), 2) as grade from enrollments group by class_id) a on e.class_id = a.class_id where e.grade < a.grade order by s.name;
+
 
 ***[Intermediate SQL II](https://github.com/turingschool/lesson_plans/blob/master/ruby_03-professional_rails_applications/intermediate_sql.md)***
 
