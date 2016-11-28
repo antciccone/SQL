@@ -17,6 +17,8 @@ List all the students and a count of how many classes they are currently enrolle
 * select students.name, COUNT(enrollments.grade) AS class_count FROM students JOIN enrollments on students.id = enrollments.student_id GROUP BY students.name
 
 List all the students and their class count IF they are in more than 2 classes
+* SELECT min(students.name), count(enrollments.grade) FROM students  JOIN enrollments ON students.id = enrollments.student_id GROUP BY students.id
+HAVING count(enrollments.grade) >= 2;
 
 List all the teachers for each student
 * select DISTINCT  students.name, teachers.name AS teachers_name  FROM students JOIN enrollments ON students.id = enrollments.student_id JOIN classes ON classes.id = enrollments.class_id JOIN teachers ON teachers.id = classes.teacher_id ORDER BY students.name;
